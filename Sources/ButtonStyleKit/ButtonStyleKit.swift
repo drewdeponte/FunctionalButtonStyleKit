@@ -31,7 +31,7 @@ public func >>> <A: View, B: View, C: View>(
 }
 
 struct ComposableButtonStyle<B: View>: ButtonStyle {
-    let buttonStyleClosure: ButtonStyleClosure<ButtonStyleConfiguration.Label, B>
+    private let buttonStyleClosure: ButtonStyleClosure<ButtonStyleConfiguration.Label, B>
 
     init(_ buttonStyleClosure: @escaping ButtonStyleClosure<ButtonStyleConfiguration.Label, B>) {
         self.buttonStyleClosure = buttonStyleClosure
