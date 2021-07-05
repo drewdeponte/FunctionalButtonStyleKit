@@ -2,10 +2,10 @@ import SwiftUI
 import Functional
 
 @available(macOS 11.0, *)
-struct ExposePressedButtonStyle: ButtonStyle {
+public struct ExposePressedButtonStyle: ButtonStyle {
     @Binding var pressed: Bool
 
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label.onChange(of: configuration.isPressed, perform: { value in
             self.pressed = value
         })
@@ -14,9 +14,9 @@ struct ExposePressedButtonStyle: ButtonStyle {
 
 // MARK: - Composable Button Framework
 
-typealias ButtonStyleClosure<A: View, B: View> = (ButtonStyleConfiguration, A) -> B
+public typealias ButtonStyleClosure<A: View, B: View> = (ButtonStyleConfiguration, A) -> B
 
-func >>> <A: View, B: View, C: View>(
+public func >>> <A: View, B: View, C: View>(
     _ f: @escaping ButtonStyleClosure<A, B>,
     _ g: @escaping ButtonStyleClosure<B, C>
 ) -> ButtonStyleClosure<A, C> {
@@ -38,13 +38,13 @@ struct ComposableButtonStyle<B: View>: ButtonStyle {
 }
 
 extension Button {
-    func composableStyle<B: View>(_ buttonStyleClosure: @escaping ButtonStyleClosure<ButtonStyleConfiguration.Label, B>) -> some View {
+    public func composableStyle<B: View>(_ buttonStyleClosure: @escaping ButtonStyleClosure<ButtonStyleConfiguration.Label, B>) -> some View {
         return self.buttonStyle(ComposableButtonStyle(buttonStyleClosure))
     }
 }
 
 extension ButtonStyle {
-    func buttonStyleClosure<A: View>() -> ButtonStyleClosure<A, Self.Body> {
+    public func buttonStyleClosure<A: View>() -> ButtonStyleClosure<A, Self.Body> {
         return { config, a in
             return self.makeBody(configuration: config)
         }
