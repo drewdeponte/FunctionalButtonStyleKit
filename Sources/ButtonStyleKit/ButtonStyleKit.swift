@@ -1,5 +1,4 @@
 import SwiftUI
-import Functional
 
 @available(macOS 11.0, *)
 public struct ExposePressedButtonStyle: ButtonStyle {
@@ -15,6 +14,8 @@ public struct ExposePressedButtonStyle: ButtonStyle {
 // MARK: - Composable Button Framework
 
 public typealias ButtonStyleClosure<A: View, B: View> = (ButtonStyleConfiguration, A) -> B
+
+infix operator >>>
 
 public func >>> <A: View, B: View, C: View>(
     _ f: @escaping ButtonStyleClosure<A, B>,
