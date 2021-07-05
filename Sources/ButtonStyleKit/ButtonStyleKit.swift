@@ -15,7 +15,11 @@ public struct ExposePressedButtonStyle: ButtonStyle {
 
 public typealias ButtonStyleClosure<A: View, B: View> = (ButtonStyleConfiguration, A) -> B
 
-infix operator >>>
+precedencegroup ForwardButtonStyleComposition {
+    associativity: left
+}
+
+infix operator >>>: ForwardButtonStyleComposition
 
 public func >>> <A: View, B: View, C: View>(
     _ f: @escaping ButtonStyleClosure<A, B>,
