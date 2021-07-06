@@ -1,7 +1,7 @@
     import XCTest
     import SwiftUI
     import Functional
-    @testable import ButtonStyleKit
+    @testable import FunctionalButtonStyleKit
 
     final class ButtonStyleKitTests: XCTestCase {
         func testForwardComposition() {
