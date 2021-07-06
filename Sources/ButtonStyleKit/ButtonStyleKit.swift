@@ -1,4 +1,5 @@
 import SwiftUI
+import Functional
 
 @available(macOS 11.0, *)
 public struct ExposePressedButtonStyle: ButtonStyle {
@@ -14,12 +15,6 @@ public struct ExposePressedButtonStyle: ButtonStyle {
 // MARK: - Composable Button Framework
 
 public typealias ButtonStyleClosure<A: View, B: View> = (ButtonStyleConfiguration, A) -> B
-
-precedencegroup ForwardButtonStyleComposition {
-    associativity: left
-}
-
-infix operator >>>: ForwardButtonStyleComposition
 
 public func >>> <A: View, B: View, C: View>(
     _ f: @escaping ButtonStyleClosure<A, B>,
@@ -45,13 +40,5 @@ struct ComposableButtonStyle<B: View>: ButtonStyle {
 extension Button {
     public func composableStyle<B: View>(_ buttonStyleClosure: @escaping ButtonStyleClosure<ButtonStyleConfiguration.Label, B>) -> some View {
         return self.buttonStyle(ComposableButtonStyle(buttonStyleClosure))
-    }
-}
-
-extension ButtonStyle {
-    public func buttonStyleClosure<A: View>() -> ButtonStyleClosure<A, Self.Body> {
-        return { config, a in
-            return self.makeBody(configuration: config)
-        }
     }
 }
