@@ -1,5 +1,5 @@
 import SwiftUI
-import Functional
+@_exported import Functional
 
 @available(macOS 11.0, *)
 public struct ExposePressedButtonStyle: ButtonStyle {
