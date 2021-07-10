@@ -1,7 +1,7 @@
 import SwiftUI
 @_exported import Functional
 
-@available(macOS 11.0, *)
+@available(macOS 11, iOS 14, *)
 public struct ExposePressedButtonStyle: ButtonStyle {
     @Binding var pressed: Bool
 
