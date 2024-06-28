@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Functional",
-        "repositoryURL": "https://github.com/uptech/Functional.git",
+        "repositoryURL": "https://github.com/drewdeponte/Functional.git",
         "state": {
           "branch": null,
           "revision": "de2d9133169b36ea960dc9cc224419c6982889e8",
